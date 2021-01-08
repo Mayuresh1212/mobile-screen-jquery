@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="mobile">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="screen">
+            <img
+                src="https://images.pexels.com/photos/4215109/pexels-photo-4215109.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+            <h2 id="clock"><br><span>12th Jul, 2020</span></h2>
+            <ul>
+                <li><i class="fa fa-phone" aria-hidden="true"></i></li>
+                <li><i class="fa fa-comment-o" aria-hidden="true"></i></li>
+                <li><i class="fa fa-camera" aria-hidden="true"></i></li>
+                <li><i class="fa fa-picture-o" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.bottom').click(function () {
+                $('.screen').toggleClass('active');
+            });
+
+            function showTime() {
+                var date = new Date();
+                var h = date.getHours();
+                var m = date.getMinutes();
+                var s = date.getSeconds();
+                var session = "AM";
+
+                if (h == 0) {
+                    h = 12;
+                }
+
+                if (h > 12) {
+                    h = h - 12;
+                    session = "PM"
+                }
+
+                h = (h < 10) ? "0" + h : h;
+                m = (m < 10) ? "0" + m : m;
+                s = (s < 10) ? "0" + s : s;
+
+                var time = h + ":" + m + ":" + s + " " + session;
+                document.getElementById('clock').innerHTML = time;
+
+                setTimeout(showTime, 1000);
+            }
+            showTime();
+        })
+    </script>
+</body>
+
+</html>
